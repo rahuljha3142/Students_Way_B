@@ -10,12 +10,13 @@ const errorMiddleware = require("./middlewares/error-middleware");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://students-way-f.vercel.app/"],
+  origin: ["http://localhost:5173", "https://students-way-f.vercel.app"],
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
-  credentialS: true,
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // 🔄 Handle preflight requests
 
 app.use(express.json());
 
