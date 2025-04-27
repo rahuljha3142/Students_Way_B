@@ -41,9 +41,9 @@ const home = async (req, res) => {
 
   const login = async(req, res) => {
     try { 
-      const{email, password} = req.body;
+      const{username, password} = req.body;
 
-      const userExist = await User.findOne({email});
+      const userExist = await User.findOne({username});
       console.log(userExist);
 
       if(!userExist) {
