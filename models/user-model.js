@@ -48,6 +48,13 @@ userSchema.pre('save', async function(next){      // pre method
 });
 
 
+// compare the password 
+
+userSchema.methods.comparePasswords = async function(password) {
+  return bcrypt.compare(password, this.password);
+}
+
+
 // json web token 
 userSchema.methods.generateToken = async function() {     // instance method
   try {
