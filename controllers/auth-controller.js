@@ -62,7 +62,7 @@ const home = async (req, res) => {
           userId: userExist._id.toString(),
         });
       } else 
-        res.status(401).json({message: "Invalid email or password"});
+        res.status(401).json({message: "Invalid username or password"});
       
     } catch (error) {
       res.status(500).json("Internal server error")
