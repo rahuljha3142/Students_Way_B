@@ -22,6 +22,7 @@ const signupSchema = z.object({
     .string({ required_error: "Password is required" })
     .min(7, { message: "Password must be at least of 6 characters" })
     .max(1024, "Password can't be greater than 1024 characters"),
+  role: z.enum(["admin", "parent", "teacher", "student"]),
 });
 
 module.exports = signupSchema; 
