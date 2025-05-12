@@ -26,6 +26,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  role: {
+    type: String,
+    enum: ["admin", "parent", "teacher", "student"],
+    default: "student",
+  },
 });
 
 // secure the password with the bcrypt
