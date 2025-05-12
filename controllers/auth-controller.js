@@ -14,7 +14,7 @@ const home = async (req, res) => {
     try {
       // console.log(req.body);
 
-      const { fullName, username, email, password } = req.body;
+      const { fullName, username, email, password, role } = req.body;
 
       const userExist = await User.findOne({email:email});
 
@@ -26,7 +26,7 @@ const home = async (req, res) => {
       // const saltRound = 10;
       // const hash_password = await bcrypt.hash(password, saltRound);
 
-      const userCreated = await User.create({ fullName, username, email, password });
+      const userCreated = await User.create({ fullName, username, email, password, role });
 
       res.status(201).json({
         message: "registration successfull", 
@@ -41,9 +41,9 @@ const home = async (req, res) => {
 
   const login = async(req, res) => {
     try { 
-      const{username, password} = req.body;
+      const{email, password} = req.body;
 
-      const userExist = await User.findOne({username});
+      const userExist = await User.findOne({email});
       console.log(userExist);
 
       if(!userExist) {
