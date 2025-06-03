@@ -10,7 +10,7 @@ const questionRoute = require("./router/question-router");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: ["http://localhost:5173", "https://students-way-f.vercel.app"],
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
