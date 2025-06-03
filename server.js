@@ -6,22 +6,24 @@ const authRoute = require("./router/auth-router");
 const contactRoute = require("./router/contact-router");
 const connectDb = require("./utils/db");
 const errorMiddleware = require("./middlewares/error-middleware");
-
+const questionRoute = require("./router/question-router");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: ["http://localhost:5173", "https://students-way-f.vercel.app"],
+  origin: "http://localhost:5173",
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); 
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
 app.use("/api/form", contactRoute);
+
+app.use("/api/questions", questionRoute);
 
 app.use(errorMiddleware);
 
